@@ -1,3 +1,3 @@
 # tw_cafeteria
 
-An app to for Thoughtworks Cafeteria
+An app for ThoughtWorks Cafeteria
