@@ -1,1 +1,0 @@
-const List<String> meals = <String>["Breakfast","Lunch","Snacks"];
