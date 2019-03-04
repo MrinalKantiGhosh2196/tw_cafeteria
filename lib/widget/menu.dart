@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:tw_cafeteria/constants/menuitems.dart';
-import 'package:tw_cafeteria/constants/meal.dart';
+import 'package:tw_cafeteria/model/meals.dart';
+import 'package:tw_cafeteria/model/meal_type.dart';
 
 class Menu extends StatelessWidget{
-  Meal mealType;
+  MealType mealType;
   Menu(this.mealType);
 
   @override
   Widget build(BuildContext context) {
     return new ListView(
-      children: menuItems[mealType].map((String item){
+      children: meals[mealType].map((String item){
         return new ListTile(title: new Text(item));
       }).toList()
     );

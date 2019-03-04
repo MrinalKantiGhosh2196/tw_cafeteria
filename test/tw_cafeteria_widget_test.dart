@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:tw_cafeteria/tw_cafeteria.dart';
-import 'package:tw_cafeteria/menu.dart';
+import 'package:tw_cafeteria/widget/tw_cafeteria.dart';
+import 'package:tw_cafeteria/widget/menu.dart';
 
 void main() {
   testWidgets("Should contain appBar & Menu", (WidgetTester tester) async {
@@ -20,4 +20,5 @@ void main() {
     expect(find.byType(TabBarView), findsOneWidget);
     expect(find.byType(Menu), findsOneWidget);
   });
+
 }
