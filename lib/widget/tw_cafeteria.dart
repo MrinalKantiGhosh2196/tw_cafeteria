@@ -12,9 +12,8 @@ class TwCafeteria extends StatelessWidget {
         length: meals.length,
         child: new Scaffold(
           appBar: new AppBar(
-            title: new Center(
-              child: new Text(ConstantText.appTitle),
-            ),
+            centerTitle: true,
+            title: new Text(ConstantText.appTitle),
             bottom: new TabBar(
               tabs: meals.keys.map((MealType mealType) {
                 return new Tab(text: mealType.name);
