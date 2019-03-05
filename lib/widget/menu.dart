@@ -8,10 +8,14 @@ class Menu extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-    return new ListView(
-      children: meals[mealType].map((String item){
-        return new ListTile(title: new Text(item));
-      }).toList()
+    return new MaterialApp(
+      home: new Scaffold(
+        body: new ListView(
+        children: meals[mealType].map((String item){
+          return new ListTile(title: new Text(item));
+        }).toList()
+      )
+      )
     );
   }
 }

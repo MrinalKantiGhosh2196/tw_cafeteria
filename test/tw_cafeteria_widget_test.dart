@@ -13,12 +13,10 @@ void main() {
     expect(find.text("Snacks"), findsOneWidget);
 
     expect(find.byType(DefaultTabController), findsOneWidget);
-    expect(find.byType(Scaffold), findsOneWidget);
     expect(find.byType(AppBar), findsOneWidget);
     expect(find.byType(TabBar), findsOneWidget);
     expect(find.byType(Tab), findsNWidgets(3));
     expect(find.byType(TabBarView), findsOneWidget);
     expect(find.byType(Menu), findsOneWidget);
   });
-
 }
