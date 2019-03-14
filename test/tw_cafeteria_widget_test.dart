@@ -62,4 +62,15 @@ void main() {
     expect(menus[1].mealType, MealType.lunch);
     expect(menus[2].mealType, MealType.snacks);
   });
+
+  testWidgets("length of DefaultTabController should be 3", (WidgetTester tester) async {
+    await tester.pumpWidget(new TwCafeteria());
+
+    MaterialApp materialApp = tester.firstWidget(find.byType(MaterialApp));
+    DefaultTabController defaultTabController = materialApp.home;
+    expect(defaultTabController.length, 3);
+
+    //TODO test for initialIndex
+  });
+
 }

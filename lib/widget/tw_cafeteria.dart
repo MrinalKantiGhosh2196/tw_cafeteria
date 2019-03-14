@@ -11,7 +11,7 @@ class TwCafeteria extends StatelessWidget {
       title: ConstantText.appTitle,
       home: new DefaultTabController(
         length: meals.length,
-        initialIndex: 0,
+        initialIndex: _getTabIndexWithRespectToTime(),
         child: new Scaffold(
           appBar: new AppBar(
             centerTitle: true,
@@ -30,6 +30,19 @@ class TwCafeteria extends StatelessWidget {
         )
       )
     );
+  }
+
+
+  int _getTabIndexWithRespectToTime() {
+    int index = 0;
+    DateTime currentTime = DateTime.now();
+    for(MealType mealType in meals.keys) {
+      if(currentTime.isAfter(mealType.getStartDateTime()) &&
+          (currentTime.isBefore(mealType.getEndDateTime()) || currentTime == mealType.getEndDateTime())){
+        return index;
+      }
+      index++;
+    }
   }
 
 }
