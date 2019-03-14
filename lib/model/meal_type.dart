@@ -1,12 +1,24 @@
+import 'package:flutter/material.dart';
+
 class MealType{
   final String _name;
-  final int startTimeInHours;
-  final int endTimeInHours;
+  final TimeOfDay _startTimeInHours;
+  final Duration _duration;
 
-  const MealType(this._name, this.startTimeInHours, this.endTimeInHours);
+  const MealType(this._name, this._startTimeInHours, this._duration);
   String get name => _name;
 
-  static const breakfast = const MealType("Breakfast", 18, 11);
-  static const lunch = const MealType("Lunch", 11, 15);
-  static const snacks = const MealType("Snacks", 15, 18);
+  DateTime getStartDateTime(){
+    DateTime currentTime = DateTime.now();
+    return DateTime(currentTime.year, currentTime.month, currentTime.day,
+        _startTimeInHours.hour);
+  }
+
+  DateTime getEndDateTime(){
+    return getStartDateTime().add(_duration);
+  }
+
+  static const breakfast = const MealType("Breakfast", TimeOfDay(hour: 18), Duration(hours: 17));
+  static const lunch = const MealType("Lunch", TimeOfDay(hour: 11), Duration(hours: 4));
+  static const snacks = const MealType("Snacks", TimeOfDay(hour: 15), Duration(hours: 3));
 }
