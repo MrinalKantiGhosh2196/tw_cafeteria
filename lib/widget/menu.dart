@@ -9,12 +9,12 @@ class Menu extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
-      home: new Scaffold(
-        body: new ListView(
-        children: meals[mealType].map((String item){
-          return new ListTile(title: new Text(item));
-        }).toList()
-      )
+      home: new Material(
+        child: new ListView(
+          children: meals[mealType].map((String item){
+            return new ListTile(title: new Text(item));
+          }).toList()
+        )
       )
     );
   }

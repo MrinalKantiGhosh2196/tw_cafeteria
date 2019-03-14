@@ -8,8 +8,10 @@ class TwCafeteria extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
+      title: ConstantText.appTitle,
       home: new DefaultTabController(
         length: meals.length,
+        initialIndex: _getTabIndexWithRespectToTime(),
         child: new Scaffold(
           appBar: new AppBar(
             centerTitle: true,
@@ -28,5 +30,17 @@ class TwCafeteria extends StatelessWidget {
         )
       )
     );
+  }
+
+  int _getTabIndexWithRespectToTime() {
+    int currentTimeInHour = DateTime.now().hour;
+    int index = 0;
+    for(MealType mealType in meals.keys){
+      if(currentTimeInHour >= mealType.startTimeInHours
+          && currentTimeInHour < mealType.endTimeInHours){
+        return index;
+      }
+      index++;
+    }
   }
 }
