@@ -5,11 +5,15 @@ import 'package:tw_cafeteria/widget/menu_view.dart';
 import 'package:tw_cafeteria/model/meal_type.dart';
 import 'package:tw_cafeteria/model/meals.dart';
 import 'package:matcher/matcher.dart' as matcher;
+import 'package:tw_cafeteria/time_provider_service.dart';
+import 'package:mockito/mockito.dart';
+
+class MockTimeProvider extends Mock implements TimeProvider {}
 
 void main() {
 
   testWidgets("should contain necessary widgets with specific count", (WidgetTester tester) async {
-    await tester.pumpWidget(new TwCafeteria());
+    await tester.pumpWidget(new TwCafeteria(new TimeProvider()));
 
     expect(find.byType(DefaultTabController), findsOneWidget);
     expect(find.byType(AppBar), findsOneWidget);
@@ -20,7 +24,7 @@ void main() {
   });
 
   testWidgets("Should contain all necessary widgets", (WidgetTester tester) async {
-    await tester.pumpWidget(new TwCafeteria());
+    await tester.pumpWidget(new TwCafeteria(new TimeProvider()));
 
     MaterialApp materialApp = tester.firstWidget(find.byType(MaterialApp));
     DefaultTabController defaultTabController = materialApp.home;
@@ -33,9 +37,9 @@ void main() {
     expect(scaffold.body, matcher.TypeMatcher<TabBarView>());
     expect(appBar.bottom, matcher.TypeMatcher<TabBar>());
   });
-  
+
   testWidgets("should have correct App title & AppBar Title", (WidgetTester tester) async{
-    await tester.pumpWidget(new TwCafeteria());
+    await tester.pumpWidget(new TwCafeteria(new TimeProvider()));
 
     MaterialApp materialApp = tester.firstWidget(find.byType(MaterialApp));
     expect(materialApp.title, "TW Cafeteria");
@@ -47,7 +51,7 @@ void main() {
   });
 
   testWidgets("should have breakfast, lunch and snacks tabbar", (WidgetTester tester) async{
-    await tester.pumpWidget(new TwCafeteria());
+    await tester.pumpWidget(new TwCafeteria(new TimeProvider()));
     TabBar tabBar = tester.widget(find.byType(TabBar));
     List<Tab> tabs = tabBar.tabs;
 
@@ -58,7 +62,7 @@ void main() {
   });
 
   testWidgets("should have Menu for breakfast, lunch and snacks in TabbarView", (WidgetTester tester) async{
-    await tester.pumpWidget(new TwCafeteria());
+    await tester.pumpWidget(new TwCafeteria(new TimeProvider()));
     TabBarView tabBarView = tester.widget(find.byType(TabBarView));
     List<MenuView> menuViews = tabBarView.children;
 
@@ -68,14 +72,32 @@ void main() {
     expect(menuViews[2].menu, meals[MealType.snacks]);
   });
 
-  testWidgets("length of DefaultTabController should be 3", (WidgetTester tester) async {
-    await tester.pumpWidget(new TwCafeteria());
-
+  testWidgets("should have initialIndex as 0 at 10:00", (WidgetTester tester) async {
+    var mockTimeProvider = new MockTimeProvider();
+    when(mockTimeProvider.getCurrentTime()).thenReturn(new DateTime(DateTime.now().year,DateTime.now().month,DateTime.now().day,10));
+    await tester.pumpWidget(new TwCafeteria(mockTimeProvider));
     MaterialApp materialApp = tester.firstWidget(find.byType(MaterialApp));
     DefaultTabController defaultTabController = materialApp.home;
     expect(defaultTabController.length, 3);
+    expect(defaultTabController.initialIndex, 0);
+  });
 
-    //TODO test for initialIndex
+  testWidgets("should have initialIndex as 1 at 14:00", (WidgetTester tester) async {
+    var mockTimeProvider = new MockTimeProvider();
+    when(mockTimeProvider.getCurrentTime()).thenReturn(new DateTime(DateTime.now().year,DateTime.now().month,DateTime.now().day,14));
+    await tester.pumpWidget(new TwCafeteria(mockTimeProvider));
+    MaterialApp materialApp = tester.firstWidget(find.byType(MaterialApp));
+    DefaultTabController defaultTabController = materialApp.home;
+    expect(defaultTabController.initialIndex, 1);
+  });
+
+  testWidgets("should have initialIndex as 2 at 19:00", (WidgetTester tester) async {
+    var mockTimeProvider = new MockTimeProvider();
+    when(mockTimeProvider.getCurrentTime()).thenReturn(new DateTime(DateTime.now().year,DateTime.now().month,DateTime.now().day,19));
+    await tester.pumpWidget(new TwCafeteria(mockTimeProvider));
+    MaterialApp materialApp = tester.firstWidget(find.byType(MaterialApp));
+    DefaultTabController defaultTabController = materialApp.home;
+    expect(defaultTabController.initialIndex, 2);
   });
 
 }

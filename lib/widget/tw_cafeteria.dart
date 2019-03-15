@@ -3,8 +3,12 @@ import 'package:tw_cafeteria/constants/constant_texts.dart';
 import 'package:tw_cafeteria/widget/menu_view.dart';
 import 'package:tw_cafeteria/model/meal_type.dart';
 import 'package:tw_cafeteria/model/meals.dart';
+import 'package:tw_cafeteria/time_provider_service.dart';
 
 class TwCafeteria extends StatelessWidget {
+  TimeProvider timeProvider;
+  TwCafeteria(this.timeProvider);
+
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
@@ -35,7 +39,7 @@ class TwCafeteria extends StatelessWidget {
 
   int _getTabIndexWithRespectToTime() {
     int index = 0;
-    DateTime currentTime = DateTime.now();
+    DateTime currentTime = timeProvider.getCurrentTime();
     for(MealType mealType in meals.keys) {
       if(currentTime.isAfter(mealType.getStartDateTime()) &&
           (currentTime.isBefore(mealType.getEndDateTime()) || currentTime == mealType.getEndDateTime())){

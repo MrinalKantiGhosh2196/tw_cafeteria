@@ -18,7 +18,7 @@ class MealType{
     return getStartDateTime().add(_duration);
   }
 
-  static const breakfast = const MealType("Breakfast", TimeOfDay(hour: 18), Duration(hours: 17));
+  static const breakfast = const MealType("Breakfast", TimeOfDay(hour: 0), Duration(hours: 11));
   static const lunch = const MealType("Lunch", TimeOfDay(hour: 11), Duration(hours: 4));
-  static const snacks = const MealType("Snacks", TimeOfDay(hour: 15), Duration(hours: 3));
+  static const snacks = const MealType("Snacks", TimeOfDay(hour: 15), Duration(hours: 9));
 }
