@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tw_cafeteria/constants/constant_texts.dart';
-import 'package:tw_cafeteria/widget/menu.dart';
+import 'package:tw_cafeteria/widget/menu_view.dart';
 import 'package:tw_cafeteria/model/meal_type.dart';
 import 'package:tw_cafeteria/model/meals.dart';
 
@@ -24,7 +24,7 @@ class TwCafeteria extends StatelessWidget {
           ),
           body: new TabBarView(
             children: meals.keys.map((MealType mealType) {
-              return new Menu(mealType);
+              return new MenuView(meals[mealType]);
             }).toList(),
           ),
         )
