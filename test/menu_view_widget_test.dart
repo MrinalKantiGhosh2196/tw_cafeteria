@@ -2,7 +2,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter/material.dart';
 import 'package:tw_cafeteria/widget/menu_view.dart';
 import 'package:tw_cafeteria/model/meal_type.dart';
-import 'package:tw_cafeteria/model/meals.dart';
 
 void main(){
 
