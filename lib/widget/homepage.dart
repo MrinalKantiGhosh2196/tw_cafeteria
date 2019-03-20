@@ -6,9 +6,9 @@ import 'package:tw_cafeteria/model/meals.dart';
 import 'package:tw_cafeteria/service/time_provider_service.dart';
 import 'package:tw_cafeteria/widget/login.dart';
 
-class TwCafeteria extends StatelessWidget {
+class Homepage extends StatelessWidget {
   TimeProvider timeProvider;
-  TwCafeteria(this.timeProvider);
+  Homepage(this.timeProvider);
 
   @override
   Widget build(BuildContext context) {
