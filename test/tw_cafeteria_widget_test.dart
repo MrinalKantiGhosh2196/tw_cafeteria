@@ -7,6 +7,7 @@ import 'package:tw_cafeteria/model/meals.dart';
 import 'package:matcher/matcher.dart' as matcher;
 import 'package:tw_cafeteria/service/time_provider_service.dart';
 import 'package:mockito/mockito.dart';
+import 'package:tw_cafeteria/widget/login.dart';
 
 class MockTimeProvider extends Mock implements TimeProvider {}
 
@@ -104,5 +105,34 @@ void main() {
     DefaultTabController defaultTabController = materialApp.home;
     expect(defaultTabController.initialIndex, 2);
   });
+
+//  testWidgets("should have initialRoute as / ", (WidgetTester tester) async{
+//    await tester.pumpWidget(new TwCafeteria(new TimeProvider()));
+//
+//    MaterialApp materialApp = tester.widget(find.byType(MaterialApp));
+//
+//    expect(materialApp.initialRoute, "/");
+//  });
+
+//  testWidgets("should map routes to correct pages", (WidgetTester tester) async{
+//    await tester.pumpWidget(new TwCafeteria(new TimeProvider()));
+//    MaterialApp materialApp = tester.widget(find.byType(MaterialApp));
+//
+//    Map routes = materialApp.routes;
+//    Function actualClosure = routes["/login"];
+//    Function expectedClosure = (BuildContext context) => new Login();
+//
+//    expect(actualClosure.runtimeType, expectedClosure.runtimeType);
+//  });
+  
+//  testWidgets("Should navigate to Login page when admin login is pressed", (WidgetTester tester) async{
+//    await tester.pumpWidget(new TwCafeteria(new TimeProvider()));
+//
+//    await tester.tap(find.byType(MaterialButton));
+//
+//    //expect(find.byType(Login), findsOneWidget);
+//  });
+
+
 
 }

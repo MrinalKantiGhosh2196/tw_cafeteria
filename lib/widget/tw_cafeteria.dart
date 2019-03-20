@@ -4,6 +4,7 @@ import 'package:tw_cafeteria/widget/menu_view.dart';
 import 'package:tw_cafeteria/model/meal_type.dart';
 import 'package:tw_cafeteria/model/meals.dart';
 import 'package:tw_cafeteria/service/time_provider_service.dart';
+import 'package:tw_cafeteria/widget/login.dart';
 
 class TwCafeteria extends StatelessWidget {
   TimeProvider timeProvider;
@@ -28,6 +29,7 @@ class TwCafeteria extends StatelessWidget {
                 child: new Text(
                   ConstantText.loginButtonText,
                 ),
+                onPressed: () => Navigator.pushNamed(context, '/login'),
               ),
             ],
           ),
