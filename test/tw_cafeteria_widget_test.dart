@@ -38,16 +38,21 @@ void main() {
     expect(appBar.bottom, matcher.TypeMatcher<TabBar>());
   });
 
-  testWidgets("should have correct App title & AppBar Title", (WidgetTester tester) async{
+  testWidgets("should have correct App title & AppBar", (WidgetTester tester) async{
     await tester.pumpWidget(new TwCafeteria(new TimeProvider()));
 
     MaterialApp materialApp = tester.firstWidget(find.byType(MaterialApp));
     expect(materialApp.title, "TW Cafeteria");
 
     AppBar appBar = tester.firstWidget(find.byType(AppBar));
-    Text appBarTitleText = appBar.title;
-    expect(appBar.centerTitle, true);
+    Row appBarRow = appBar.title;
+    Text appBarTitleText = appBarRow.children[0];
+    MaterialButton materialButton = appBarRow.children[1];
+    Text buttonText = materialButton.child;
+
     expect(appBarTitleText.data, "TW Cafeteria");
+    expect(appBarRow.mainAxisAlignment, MainAxisAlignment.spaceBetween);
+    expect(buttonText.data, "Admin Login");
   });
 
   testWidgets("should have breakfast, lunch and snacks tabbar", (WidgetTester tester) async{

@@ -18,8 +18,19 @@ class TwCafeteria extends StatelessWidget {
         initialIndex: _getTabIndexWithRespectToTime(),
         child: new Scaffold(
           appBar: new AppBar(
-            centerTitle: true,
-            title: new Text(ConstantText.appTitle),
+            title: new Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              new Text(
+                ConstantText.appTitle,
+              ),
+              new MaterialButton(
+                child: new Text(
+                  ConstantText.loginButtonText,
+                ),
+              ),
+            ],
+          ),
             bottom: new TabBar(
               tabs: meals.keys.map((MealType mealType) {
                 return new Tab(text: mealType.name);
