@@ -28,4 +28,11 @@ void main(){
     expect(actualClosureForLogin.runtimeType, expectedClosureForLogin.runtimeType);
     expect(actualClosureForRootPath.runtimeType, expectedClosureForRootPath.runtimeType);
   });
+
+  testWidgets("should have TW Cafeteria as app title", (WidgetTester tester) async{
+    await tester.pumpWidget(new TwCafeteria());
+    MaterialApp materialApp = tester.widget(find.byType(MaterialApp));
+
+    expect(materialApp.title, "TW Cafeteria");
+  });
 }

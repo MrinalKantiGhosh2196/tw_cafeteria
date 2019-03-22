@@ -12,9 +12,7 @@ class Homepage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new MaterialApp(
-      title: ConstantText.appTitle,
-      home: new DefaultTabController(
+    return new DefaultTabController(
         length: meals.length,
         initialIndex: _getTabIndexWithRespectToTime(),
         child: new Scaffold(
@@ -27,9 +25,9 @@ class Homepage extends StatelessWidget {
               ),
               new MaterialButton(
                 child: new Text(
-                  ConstantText.loginButtonText,
+                  ConstantText.adminLoginText,
                 ),
-                onPressed: () => Navigator.pushNamed(context, '/login'),
+                onPressed: () => Navigator.pushNamed(context, "/login")
               ),
             ],
           ),
@@ -45,8 +43,7 @@ class Homepage extends StatelessWidget {
             }).toList(),
           ),
         )
-      )
-    );
+      );
   }
 
 
