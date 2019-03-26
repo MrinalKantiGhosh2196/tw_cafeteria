@@ -46,15 +46,15 @@ void main() {
       return padding;
     }).toList();
 
-    expect(loginPaddingWidgets[0].key, new Key("adminLoginHeading"));
-    expect(loginPaddingWidgets[1].key, new Key("usernameTextField"));
-    expect(loginPaddingWidgets[2].key, new Key("passwordTextField"));
-    expect(loginPaddingWidgets[3].key, new Key("loginButton"));
+    expect(loginPaddingWidgets[0].key, new Key("adminLoginHeadingPadding"));
+    expect(loginPaddingWidgets[1].key, new Key("usernameTextFieldPadding"));
+    expect(loginPaddingWidgets[2].key, new Key("passwordTextFieldPadding"));
+    expect(loginPaddingWidgets[3].key, new Key("loginButtonPadding"));
   });
 
   testWidgets("Should have title Admin Login & style as heading1White", (WidgetTester tester) async{
     await tester.pumpWidget(new MaterialApp(home: new Login()));
-    Padding adminLoginHeading = tester.widget(find.byKey(new Key("adminLoginHeading")));
+    Padding adminLoginHeading = tester.widget(find.byKey(new Key("adminLoginHeadingPadding")));
     Text adminLoginHeadingText = adminLoginHeading.child;
 
     expect(adminLoginHeadingText.data, "Admin Login");
@@ -63,7 +63,7 @@ void main() {
 
   testWidgets("Should have username textfield with appropriate properties", (WidgetTester tester) async{
     await tester.pumpWidget(new MaterialApp(home: new Login()));
-    Padding usernameField = tester.widget(find.byKey(new Key("usernameTextField")));
+    Padding usernameField = tester.widget(find.byKey(new Key("usernameTextFieldPadding")));
     TextField usernameTextField = usernameField.child;
     InputDecoration inputDecorationForUsernameField = usernameTextField.decoration;
 
@@ -75,7 +75,7 @@ void main() {
 
   testWidgets("Should have password textfield with appropriate properties", (WidgetTester tester) async{
     await tester.pumpWidget(new MaterialApp(home: new Login()));
-    Padding passwordField = tester.widget(find.byKey(new Key("passwordTextField")));
+    Padding passwordField = tester.widget(find.byKey(new Key("passwordTextFieldPadding")));
     TextField passwordTextField = passwordField.child;
     InputDecoration inputDecorationForUsernameField = passwordTextField.decoration;
 
@@ -88,7 +88,7 @@ void main() {
   testWidgets("Should have password textfield with appropriate properties", (WidgetTester tester) async{
     await tester.pumpWidget(new MaterialApp(home: new Login()));
     
-    Padding loginButton = tester.widget(find.byKey(new Key("loginButton")));
+    Padding loginButton = tester.widget(find.byKey(new Key("loginButtonPadding")));
     RaisedButton loginRaisedButton = loginButton.child;
     Text loginButtonText = loginRaisedButton.child;
     
@@ -98,4 +98,5 @@ void main() {
     expect(loginRaisedButton.splashColor, Colors.blue);
     expect(loginRaisedButton.animationDuration, new Duration(microseconds: 1));
   });
+
 }

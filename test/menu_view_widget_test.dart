@@ -28,7 +28,6 @@ void main(){
   });
 
   testWidgets("should have correct menu items for breakfast", (WidgetTester tester) async{
-    MealType mealType = MealType.breakfast;
     await tester.pumpWidget(
       new MaterialApp(
         home : new Material(

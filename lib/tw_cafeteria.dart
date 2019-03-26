@@ -12,7 +12,8 @@ import 'package:tw_cafeteria/constants/constant_texts.dart';
       initialRoute: '/',
       routes: {
         '/' : (context) => new Homepage(new TimeProvider()),
-        '/login' : (context) => new Login()
+        '/login' : (context) => new Login(),
+        '/loginAuthenticationError': (context) => new Login(text: "Wrong Username or Password")
       },
     );
   }
