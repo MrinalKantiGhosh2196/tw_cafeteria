@@ -7,6 +7,7 @@ import 'package:tw_cafeteria/model/meals.dart';
 import 'package:matcher/matcher.dart' as matcher;
 import 'package:tw_cafeteria/service/time_provider_service.dart';
 import 'package:mockito/mockito.dart';
+import 'package:tw_cafeteria/constants/style.dart';
 
 class MockTimeProvider extends Mock implements TimeProvider {}
 
@@ -48,6 +49,7 @@ void main() {
     expect(appBarTitleText.data, "TW Cafeteria");
     expect(appBarRow.mainAxisAlignment, MainAxisAlignment.spaceBetween);
     expect(buttonText.data, "Admin Login");
+    expect(buttonText.style, Style.paragraphWhite);
   });
 
   testWidgets("should have breakfast, lunch and snacks tabbar", (WidgetTester tester) async{

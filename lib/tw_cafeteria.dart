@@ -9,6 +9,9 @@ import 'package:tw_cafeteria/constants/constant_texts.dart';
   Widget build(BuildContext context) {
     return new MaterialApp(
       title: ConstantText.appTitle,
+      theme: new ThemeData(
+        primaryColor: Colors.teal
+      ),
       initialRoute: '/',
       routes: {
         '/' : (context) => new Homepage(new TimeProvider()),

@@ -7,6 +7,15 @@ import 'package:tw_cafeteria/tw_cafeteria.dart';
 
 void main(){
 
+  testWidgets("Should have primaryColor as teal", (WidgetTester tester) async{
+    await tester.pumpWidget(new TwCafeteria());
+
+    MaterialApp materialApp = tester.firstWidget(find.byType(MaterialApp));
+    ThemeData themeData = materialApp.theme;
+    
+    expect(themeData.primaryColor, Colors.teal);
+  });
+
   testWidgets("should have initialRoute as / ", (WidgetTester tester) async{
     await tester.pumpWidget(new TwCafeteria());
 

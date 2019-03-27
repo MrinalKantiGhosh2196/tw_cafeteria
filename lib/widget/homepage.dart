@@ -4,6 +4,7 @@ import 'package:tw_cafeteria/widget/menu_view.dart';
 import 'package:tw_cafeteria/model/meal_type.dart';
 import 'package:tw_cafeteria/model/meals.dart';
 import 'package:tw_cafeteria/service/time_provider_service.dart';
+import 'package:tw_cafeteria/constants/style.dart';
 
 class Homepage extends StatelessWidget {
   TimeProvider timeProvider;
@@ -25,6 +26,7 @@ class Homepage extends StatelessWidget {
               new MaterialButton(
                 child: new Text(
                   ConstantText.adminLoginText,
+                  style: Style.paragraphWhite,
                 ),
                 onPressed: () => Navigator.pushNamed(context, "/login")
               ),
