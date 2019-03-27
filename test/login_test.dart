@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:tw_cafeteria/constants/style.dart';
 
 void main() {
-  testWidgets("should have background color set as blue", (WidgetTester tester) async {
+  testWidgets("should have background color set as teal", (WidgetTester tester) async {
     await tester.pumpWidget(new MaterialApp(home: new Login()));
     Scaffold scaffold = tester.widget(find.byType(Scaffold));
 
-    expect(scaffold.backgroundColor, Colors.blue);
+    expect(scaffold.backgroundColor, Colors.teal);
   });
 
   testWidgets("Should have elevation 0 for appbar", (WidgetTester tester) async {
@@ -69,7 +69,7 @@ void main() {
 
     expect(inputDecorationForUsernameField.labelText, "Username");
     expect(inputDecorationForUsernameField.filled, true);
-    expect(inputDecorationForUsernameField.labelStyle, Style.paragraphBlack);
+    expect(inputDecorationForUsernameField.labelStyle, Style.paragraphBlack18);
     expect(inputDecorationForUsernameField.fillColor, Colors.white);
   });
 
@@ -81,7 +81,7 @@ void main() {
 
     expect(inputDecorationForUsernameField.labelText, "Password");
     expect(inputDecorationForUsernameField.filled, true);
-    expect(inputDecorationForUsernameField.labelStyle, Style.paragraphBlack);
+    expect(inputDecorationForUsernameField.labelStyle, Style.paragraphBlack18);
     expect(inputDecorationForUsernameField.fillColor, Colors.white);
   });
 

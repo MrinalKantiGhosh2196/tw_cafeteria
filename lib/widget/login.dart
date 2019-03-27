@@ -9,7 +9,7 @@ class Login extends StatelessWidget {
       appBar: new AppBar(
         elevation: 0,
       ),
-      backgroundColor: Colors.blue,
+      backgroundColor: Colors.teal,
       body:new Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
@@ -28,7 +28,7 @@ class Login extends StatelessWidget {
               decoration: InputDecoration(
                 labelText: ConstantText.usernameLabelText,
                 filled: true,
-                labelStyle: Style.paragraphBlack,
+                labelStyle: Style.paragraphBlack18,
                 fillColor: Colors.white,
               ),
             ),
@@ -40,7 +40,7 @@ class Login extends StatelessWidget {
               decoration: InputDecoration(
                 labelText: ConstantText.passwordLabelText,
                 filled: true,
-                labelStyle: Style.paragraphBlack,
+                labelStyle: Style.paragraphBlack18,
                 fillColor: Colors.white,
     ),
             ),
