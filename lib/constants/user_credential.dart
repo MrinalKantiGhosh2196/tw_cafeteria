@@ -1,4 +1,4 @@
 class UserCredential{
-  static final adminUserId = "admin";
+  static final adminUsername = "admin";
   static final adminPassword = "admin";
 }

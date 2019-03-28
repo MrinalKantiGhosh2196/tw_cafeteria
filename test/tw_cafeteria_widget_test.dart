@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter/material.dart';
-import 'package:tw_cafeteria/widget/login.dart';
+import 'package:tw_cafeteria/widget/login_page.dart';
 import 'package:tw_cafeteria/service/time_provider_service.dart';
 import 'package:tw_cafeteria/widget/homepage.dart';
 import 'package:tw_cafeteria/tw_cafeteria.dart';
@@ -31,7 +31,7 @@ void main(){
     Map routes = materialApp.routes;
     Function actualClosureForLogin = routes["/login"];
     Function actualClosureForRootPath = routes["/"];
-    Function expectedClosureForLogin = (BuildContext context) => new Login();
+    Function expectedClosureForLogin = (BuildContext context) => new LoginPage();
     Function expectedClosureForRootPath = (BuildContext context) => new Homepage(new TimeProvider());
 
     expect(actualClosureForLogin.runtimeType, expectedClosureForLogin.runtimeType);
