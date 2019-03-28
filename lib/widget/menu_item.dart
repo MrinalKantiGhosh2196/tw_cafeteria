@@ -18,23 +18,24 @@ class _MenuItemState extends State<MenuItem>{
 
   @override
   Widget build(BuildContext context) {
-    return new ListTile(
-      title: new Text(_menuItem),
-      trailing: new Row(
-        mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: <Widget>[
-          _iconButton(new Icon(Icons.thumb_up), paddingRight: 10),
-          _iconButton(new Icon(Icons.thumb_down), paddingLeft: 10),
-        ],
+    return new Card(
+      child: new ListTile(
+        title: new Text(_menuItem),
+        trailing: new Row(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            _buildIconButton(new Icon(Icons.thumb_up), paddingRight: 10),
+            _buildIconButton(new Icon(Icons.thumb_down), paddingLeft: 10),
+          ],
+        ),
       ),
     );
   }
 
-  Widget _iconButton(Icon icon, {double paddingLeft = 0, double paddingRight = 0}) {
-    return new Padding(
+  Widget _buildIconButton(Icon icon, {double paddingLeft = 0, double paddingRight = 0}) {
+    return new IconButton(
         padding: EdgeInsets.only(left: paddingLeft, right: paddingRight),
-        child: icon
+        icon: icon
     );
   }
 }
