@@ -13,38 +13,39 @@ class Homepage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new DefaultTabController(
-        length: meals.length,
-        initialIndex: _getTabIndexWithRespectToTime(),
-        child: new Scaffold(
-          appBar: new AppBar(
-            title: new Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              new Text(
-                ConstantText.appTitle,
-              ),
-              new MaterialButton(
-                child: new Text(
-                  ConstantText.adminLoginText,
-                  style: Style.paragraphWhite,
-                ),
-                onPressed: () => Navigator.pushNamed(context, "/login")
-              ),
-            ],
-          ),
-            bottom: new TabBar(
-              tabs: meals.keys.map((MealType mealType) {
-                return new Tab(text: mealType.name);
-              }).toList()
+      key: Key("homepage"),
+      length: meals.length,
+      initialIndex: _getTabIndexWithRespectToTime(),
+      child: new Scaffold(
+        appBar: new AppBar(
+          title: new Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            new Text(
+              ConstantText.appTitle,
             ),
+            new MaterialButton(
+              child: new Text(
+                ConstantText.adminLoginText,
+                style: Style.paragraphWhite,
+              ),
+              onPressed: () => Navigator.pushNamed(context, "/login")
+            ),
+          ],
+        ),
+          bottom: new TabBar(
+            tabs: meals.keys.map((MealType mealType) {
+              return new Tab(text: mealType.name);
+            }).toList()
           ),
-          body: new TabBarView(
-            children: meals.keys.map((MealType mealType) {
-              return new MenuView(meals[mealType]);
-            }).toList(),
-          ),
-        )
-      );
+        ),
+        body: new TabBarView(
+          children: meals.keys.map((MealType mealType) {
+            return new MenuView(meals[mealType]);
+          }).toList(),
+        ),
+      )
+    );
   }
 
 
@@ -59,5 +60,4 @@ class Homepage extends StatelessWidget {
       index++;
     }
   }
-
 }

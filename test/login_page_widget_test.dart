@@ -71,6 +71,7 @@ void main() {
     TextField usernameTextField = usernameField.child;
     InputDecoration inputDecorationForUsernameField = usernameTextField.decoration;
 
+    expect(usernameTextField.autofocus, true);
     expect(inputDecorationForUsernameField.labelText, "Username");
     expect(inputDecorationForUsernameField.filled, true);
     expect(inputDecorationForUsernameField.labelStyle, Style.paragraphBlack18);
@@ -83,6 +84,7 @@ void main() {
     TextField passwordTextField = passwordField.child;
     InputDecoration inputDecorationForUsernameField = passwordTextField.decoration;
 
+    expect(passwordTextField.obscureText, true);
     expect(inputDecorationForUsernameField.labelText, "Password");
     expect(inputDecorationForUsernameField.filled, true);
     expect(inputDecorationForUsernameField.labelStyle, Style.paragraphBlack18);

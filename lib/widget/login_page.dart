@@ -46,6 +46,7 @@ class LoginPageState extends State<LoginPage>{
               child: TextField(
                 key: new Key("usernameTextField"),
                 controller: usernameTextFieldController,
+                autofocus: true,
                 decoration: InputDecoration(
                   labelText: ConstantText.usernameLabelText,
                   filled: true,
@@ -60,6 +61,7 @@ class LoginPageState extends State<LoginPage>{
               child: TextField(
                 key: new Key("passwordTextField"),
                 controller: passwordTextFieldController,
+                obscureText: true,
                 decoration: InputDecoration(
                   labelText: ConstantText.passwordLabelText,
                   filled: true,
@@ -72,6 +74,7 @@ class LoginPageState extends State<LoginPage>{
               key: new Key("loginButtonPadding"),
               padding: Style.loginWidgetsPadding,
               child: new RaisedButton(
+                key: Key("loginButton"),
                 child: new Text("Login"),
                 color: Colors.black54,
                 textColor: Colors.white,
@@ -102,7 +105,7 @@ class LoginPageState extends State<LoginPage>{
 
   Widget _displayErrorMessage() {
     if(this._showErrorMessage){
-      return new Text("Invalid Username or Password",style: Style.errorText);
+      return new Text(ConstantText.loginAuthenticationErrorMessage,key: Key("errorMessage"),style: Style.errorText);
     }
     return new Container();
   }
