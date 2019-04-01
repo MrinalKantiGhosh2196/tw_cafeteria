@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:tw_cafeteria/widget/menu_item.dart';
+import 'package:tw_cafeteria/widget/build_icon_button.dart';
 
 void main() {
   testWidgets("should contain proper title in ListTile", (WidgetTester tester) async {
@@ -21,17 +22,7 @@ void main() {
     Row row = listTile.trailing;
     List<Widget> iconButtons = row.children;
 
-    IconButton likeIconButton = iconButtons[0];
-    IconButton dislikeIconButton = iconButtons[1];
-
-    Icon likeIcon = likeIconButton.icon;
-    Icon dislikeIcon = dislikeIconButton.icon;
-
     expect(row.mainAxisSize, MainAxisSize.min);
-    expect(likeIcon.icon, Icons.thumb_up);
-    expect(dislikeIcon.icon, Icons.thumb_down);
-    expect(likeIconButton.padding, EdgeInsets.only(right: 10));
-    expect(dislikeIconButton.padding, EdgeInsets.only(left: 10));
-
+    expect(find.byType(BuildIconButton), findsNWidgets(2));
   });
 }
