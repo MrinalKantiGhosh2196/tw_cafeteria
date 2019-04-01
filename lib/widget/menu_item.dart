@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tw_cafeteria/widget/BuildButtonIcon.dart';
+import 'package:tw_cafeteria/model/menu_item_events.dart';
+
 
 class MenuItem extends StatefulWidget{
   final String _menuItem;
@@ -8,61 +10,56 @@ class MenuItem extends StatefulWidget{
 
   @override
   State<StatefulWidget> createState() {
-    return new _MenuItemState(_menuItem);
+    return new _MenuItemState();
   }
 
 }
 
 class _MenuItemState extends State<MenuItem>{
-  final String _menuItemName;
-  bool isTappedLikeButton;
-  bool isTappedDislikeButton;
+  bool isLiked;
+  bool isDisliked;
   BuildIconButton likeButton;
   BuildIconButton dislikeButton;
 
-  _MenuItemState(this._menuItemName);
+  _MenuItemState();
 
   @override
   void initState() {
     super.initState();
-    isTappedLikeButton = false;
-    isTappedDislikeButton = false;
+    isLiked = false;
+    isDisliked = false;
   }
 
   @override
   Widget build(BuildContext context) {
-    likeButton =  new BuildIconButton(Icons.thumb_up, ()=>{Colors.grey,onTappedLikeButton("like")}, isTappedLikeButton,  paddingRight: 10);
-    dislikeButton = new BuildIconButton(Icons.thumb_down, Colors.grey,onTappedDislikeButton, isTappedDislikeButton,  paddingLeft: 10);
+    likeButton =  new BuildIconButton(Icons.thumb_up,() => onTappedIconButton(MenuItemEvents.like), isLiked,  Colors.blueAccent, initialColor: Colors.grey, paddingRight: 10);
+    dislikeButton = new BuildIconButton(Icons.thumb_down,() => onTappedIconButton(MenuItemEvents.dislike), isDisliked,  Colors.redAccent, initialColor: Colors.grey, paddingLeft: 10);
+
     return new Card(
       child: new ListTile(
-        title: new Text(_menuItemName),
+        title: new Text(widget._menuItem),
         trailing: new Row(
           mainAxisSize: MainAxisSize.min,
-          children: <Widget>[likeButton, dislikeButton],
+          children: <Widget>[
+            likeButton, dislikeButton
+          ],
         ),
       ),
     );
   }
 
-  onLikeBtnTap(){// like or dislike
-    //     likeButton.changeColor(Colors.blueAccent);
-
-    if(isTappedDislikeButton == true){
-      // dislike = true
+  onTappedIconButton(MenuItemEvents event){
+    if(event == MenuItemEvents.like) {
+      setState(() {
+        isLiked = !isLiked;
+        isDisliked = false;
+      });
+    } else {
+      setState(() {
+        isDisliked = !isDisliked;
+        isLiked = false;
+      });
     }
-    else{
-      //like = false
-    }
-    setState(() {
-      isTappedLikeButton = !isTappedLikeButton;
-    });
-  }
-
-  onTappedDislikeButton(){
-    dislikeButton.changeColor(Colors.redAccent);
-    setState(() {
-      isTappedDislikeButton = !isTappedDislikeButton;
-    });
   }
 
 }
