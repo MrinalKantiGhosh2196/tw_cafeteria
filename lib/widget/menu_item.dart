@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:tw_cafeteria/widget/build_icon_button.dart';
+import 'package:tw_cafeteria/model/menu_item_events.dart';
+
 
 class MenuItem extends StatefulWidget{
   final String _menuItem;
@@ -7,35 +10,56 @@ class MenuItem extends StatefulWidget{
 
   @override
   State<StatefulWidget> createState() {
-    return new _MenuItemState(_menuItem);
+    return new _MenuItemState();
   }
+
 }
 
 class _MenuItemState extends State<MenuItem>{
-  final String _menuItem;
+  bool isLiked;
+  bool isDisliked;
+  BuildIconButton likeButton;
+  BuildIconButton dislikeButton;
 
-  _MenuItemState(this._menuItem);
+  _MenuItemState();
+
+  @override
+  void initState() {
+    super.initState();
+    isLiked = false;
+    isDisliked = false;
+  }
 
   @override
   Widget build(BuildContext context) {
+    likeButton =  new BuildIconButton(Icons.thumb_up,() => onTappedIconButton(MenuItemEvents.like), isLiked,  Colors.blueAccent, initialColor: Colors.grey, paddingRight: 10);
+    dislikeButton = new BuildIconButton(Icons.thumb_down,() => onTappedIconButton(MenuItemEvents.dislike), isDisliked,  Colors.redAccent, initialColor: Colors.grey, paddingLeft: 10);
+
     return new Card(
       child: new ListTile(
-        title: new Text(_menuItem),
+        title: new Text(widget._menuItem),
         trailing: new Row(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            _buildIconButton(new Icon(Icons.thumb_up), paddingRight: 10),
-            _buildIconButton(new Icon(Icons.thumb_down), paddingLeft: 10),
+            likeButton, dislikeButton
           ],
         ),
       ),
     );
   }
 
-  Widget _buildIconButton(Icon icon, {double paddingLeft = 0, double paddingRight = 0}) {
-    return new IconButton(
-        padding: EdgeInsets.only(left: paddingLeft, right: paddingRight),
-        icon: icon
-    );
+  onTappedIconButton(MenuItemEvents event){
+    if(event == MenuItemEvents.like) {
+      setState(() {
+        isLiked = !isLiked;
+        isDisliked = false;
+      });
+    } else {
+      setState(() {
+        isDisliked = !isDisliked;
+        isLiked = false;
+      });
+    }
   }
+
 }
