@@ -63,7 +63,9 @@ build/
 **/ios/ServiceDefinitions.json
 **/ios/Runner/GeneratedPluginRegistrant.*
 **/ios/Runner.xcworkspace/xcshareddata/
-**/ios/Runner.xcodeproj/project.pbxproj
+
+
+# Test coverage
 **/coverage/
 
 # Exceptions to above rules.
