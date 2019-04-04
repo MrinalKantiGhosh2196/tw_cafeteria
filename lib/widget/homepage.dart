@@ -24,13 +24,21 @@ class Homepage extends StatelessWidget {
             new Text(
               ConstantText.appTitle,
             ),
-            new MaterialButton(
-              child: new Text(
-                ConstantText.adminLoginText,
-                style: Style.paragraphWhite,
-              ),
-              onPressed: () => Navigator.pushNamed(context, "/login")
-            ),
+            new Row(
+              children: <Widget>[
+                new MaterialButton(
+                    child: new Text(
+                      ConstantText.adminLoginText,
+                      style: Style.paragraphWhite,
+                    ),
+                    onPressed: () => Navigator.pushNamed(context, "/login")
+                ),
+                new IconButton(
+                  icon: Icon(Icons.camera),
+                  onPressed: () => onTappedCamera(context)
+                )
+              ],
+            )
           ],
         ),
           bottom: new TabBar(
@@ -59,5 +67,33 @@ class Homepage extends StatelessWidget {
       }
       index++;
     }
+  }
+
+  Future<void> onTappedCamera(BuildContext context) {
+    return showDialog(context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            content: new SingleChildScrollView(
+              child: new ListBody(
+                children: <Widget>[
+                  new Container(
+                    padding: EdgeInsets.only(bottom: 10),
+                    child: GestureDetector(
+                      child: new Text('Take a picture'),
+                      onTap: null,
+                    ),
+                  ),
+                  new Container(
+                    padding: EdgeInsets.only(top: 10),
+                    child: GestureDetector(
+                      child: new Text('Select from gallery'),
+                      onTap: null,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          );
+        });
   }
 }
