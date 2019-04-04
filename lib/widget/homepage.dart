@@ -5,6 +5,8 @@ import 'package:tw_cafeteria/model/meal_type.dart';
 import 'package:tw_cafeteria/model/meals.dart';
 import 'package:tw_cafeteria/service/time_provider_service.dart';
 import 'package:tw_cafeteria/constants/style.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:tw_cafeteria/widget/image_uploader.dart';
 
 class Homepage extends StatelessWidget {
   TimeProvider timeProvider;
@@ -35,7 +37,7 @@ class Homepage extends StatelessWidget {
                 ),
                 new IconButton(
                   icon: Icon(Icons.camera),
-                  onPressed: () => onTappedCamera(context)
+                  onPressed: () => Navigator.pushNamed(context, "/imageUpload")
                 )
               ],
             )
@@ -67,33 +69,5 @@ class Homepage extends StatelessWidget {
       }
       index++;
     }
-  }
-
-  Future<void> onTappedCamera(BuildContext context) {
-    return showDialog(context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            content: new SingleChildScrollView(
-              child: new ListBody(
-                children: <Widget>[
-                  new Container(
-                    padding: EdgeInsets.only(bottom: 10),
-                    child: GestureDetector(
-                      child: new Text('Take a picture'),
-                      onTap: null,
-                    ),
-                  ),
-                  new Container(
-                    padding: EdgeInsets.only(top: 10),
-                    child: GestureDetector(
-                      child: new Text('Select from gallery'),
-                      onTap: null,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          );
-        });
   }
 }
