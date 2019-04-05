@@ -5,8 +5,6 @@ import 'package:tw_cafeteria/model/meal_type.dart';
 import 'package:tw_cafeteria/model/meals.dart';
 import 'package:tw_cafeteria/service/time_provider_service.dart';
 import 'package:tw_cafeteria/constants/style.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:tw_cafeteria/widget/image_uploader.dart';
 
 class Homepage extends StatelessWidget {
   TimeProvider timeProvider;

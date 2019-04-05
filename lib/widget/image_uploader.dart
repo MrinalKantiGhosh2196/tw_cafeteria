@@ -12,8 +12,11 @@ class ImageUploaderState extends State<ImageUploader> {
   File image;
 
   Future chooseImage(ImageSource source) async {
+    double deviceWidth = MediaQuery.of(context).size.width;
+    double deviceHeight = MediaQuery.of(context).size.height;
+
     File picture = await ImagePicker.pickImage(
-        source: source);
+        source: source, maxHeight: deviceHeight, maxWidth: deviceWidth);
     setState(() {
       image = picture;
     });
