@@ -5,10 +5,10 @@ class BuildIconButton extends StatelessWidget{
   final double paddingLeft;
   final double paddingRight;
   final VoidCallback _onPressed;
-  Color initialColor;
-  Color onTappedColor;
+  final Color initialColor;
+  final Color onTappedColor;
 
-  bool isTapped;
+  final bool isTapped;
 
   BuildIconButton(this._icon, this._onPressed, this.isTapped, this.onTappedColor, {this.paddingLeft = 0, this.paddingRight = 0, this.initialColor = Colors.grey});
 
