@@ -35,7 +35,7 @@ class Homepage extends StatelessWidget {
                 ),
                 new IconButton(
                   icon: Icon(Icons.camera),
-                  onPressed: () => Navigator.pushNamed(context, "/imageUpload")
+                  onPressed: () => Navigator.pushNamed(context, "/imageLoad")
                 )
               ],
             )

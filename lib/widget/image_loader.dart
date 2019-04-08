@@ -1,14 +1,15 @@
+import 'package:flutter/material.dart';
 import 'dart:io';
 import 'dart:async';
+import 'package:tw_cafeteria/widget/upload_image.dart';
 import "package:image_picker/image_picker.dart";
-import 'package:flutter/material.dart';
 
-class ImageUploader extends StatefulWidget {
+class ImageLoader extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => new ImageUploaderState();
+  State<StatefulWidget> createState() => new ImageLoaderState();
 }
 
-class ImageUploaderState extends State<ImageUploader> {
+class ImageLoaderState extends State<ImageLoader> {
   File image;
 
   Future chooseImage(ImageSource source) async {
@@ -51,25 +52,7 @@ class ImageUploaderState extends State<ImageUploader> {
         )
         );
     } else {
-      return uploadPic();
+      return UploadImage(image);
     }
-  }
-
-  Widget uploadPic(){
-    return Scaffold(
-        appBar: AppBar(
-            title: Text("Upload a Pic"),
-            actions: <Widget>[
-              new Column(
-                children: <Widget>[new IconButton(icon: Icon(
-                    Icons.arrow_forward, color: Colors.white),
-                    iconSize: 40, padding: EdgeInsets.only(right: 30),
-                    onPressed:null)
-                ],)
-            ]
-        ),
-        body: Center(
-            child: Image.file(image))
-    );
   }
 }

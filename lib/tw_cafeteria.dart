@@ -3,7 +3,7 @@ import 'package:tw_cafeteria/widget/homepage.dart';
 import 'package:tw_cafeteria/service/time_provider_service.dart';
 import 'package:tw_cafeteria/widget/login_page.dart';
 import 'package:tw_cafeteria/constants/constant_texts.dart';
-import 'package:tw_cafeteria/widget/image_uploader.dart';
+import 'package:tw_cafeteria/widget/image_loader.dart';
 
 
  class TwCafeteria extends StatelessWidget {
@@ -18,7 +18,7 @@ import 'package:tw_cafeteria/widget/image_uploader.dart';
       routes: {
         '/' : (context) => new Homepage(new TimeProvider()),
         '/login' : (context) => new LoginPage(),
-        '/imageUpload' : (context) => ImageUploader()
+        '/imageLoad' : (context) => ImageLoader()
       },
     );
   }
